@@ -6,7 +6,7 @@ class Checkout extends React.Component {
   };
 
   componentDidMount() {
-    const { keyStorage } = this.state;
+    // const { keyStorage } = this.state;
     const value = JSON.parse(localStorage.getItem('productsLocalStorage'));
     this.setState({ keyStorage: value });
   }
@@ -15,13 +15,7 @@ class Checkout extends React.Component {
     const { keyStorage } = this.state;
     console.log(keyStorage);
     return (
-        
-      <div> {
-            if(keyStorage.length > 0){
-                
-            }
-            }
-        </div>
+      <p> teste </p>
 
     );
   }
