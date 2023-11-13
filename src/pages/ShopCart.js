@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { MdDelete, MdOutlineRemoveShoppingCart } from 'react-icons/md';
+import { AiFillMinusSquare, AiFillPlusSquare } from 'react-icons/ai';
+import Header from '../components/Header';
 import '../styles/ShopCart.css';
 
 class ShopCart extends Component {
@@ -65,61 +68,77 @@ class ShopCart extends Component {
     const storage = 'productsLocalStorage';
     const getStorage = JSON.parse(localStorage.getItem(storage));
     return (
-      <div>
-        {
-          getStorage.length === 0
-            ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
-            : (
-              <div>
-                {
-                  products.map((product) => (
-                    <div key={ product.product.id }>
-                      <p data-testid="shopping-cart-product-name">
-                        {product.product.title}
-                      </p>
-                      <p data-testid="shopping-cart-product-quantity">
-                        {product.quantity}
-                      </p>
-
-                      <button
-                        data-testid="product-increase-quantity"
-                        type="button"
-                        onClick={ () => this.increaseProduct(product) }
+      <>
+        <Header />
+        <div>
+          {
+            getStorage.length === 0
+              ? <p data-testid="shopping-cart-empty-message" className="empty-cart">
+                Seu carrinho está vazio
+                {' '}
+                <MdOutlineRemoveShoppingCart className="icon-empty-cart" />
+              </p>
+              : (
+                <div className="container-all-infos">
+                  {
+                    products.map((product) => (
+                      <div
+                        key={ product.product.id }
+                        className="card-product-shopping-card"
                       >
-                        +
+                        <p data-testid="shopping-cart-product-name">
+                          {product.product.title}
+                        </p>
+                        <img
+                          className="card-img"
+                          src={ `${product.product.thumbnail}` }
+                          alt="product-img"
+                        />
+                        <p data-testid="shopping-cart-product-quantity">
+                          {product.quantity}
+                        </p>
+                        <div className="containet-button-card">
+                          <button
+                            data-testid="product-increase-quantity"
+                            type="button"
+                            onClick={ () => this.increaseProduct(product) }
+                          >
+                            <AiFillPlusSquare id="button-icon1" />
 
-                      </button>
-                      <button
-                        data-testid="product-decrease-quantity"
-                        type="button"
-                        onClick={ () => this.decreaseProduct(product) }
-                      >
-                        -
+                          </button>
+                          <button
+                            data-testid="product-decrease-quantity"
+                            type="button"
+                            onClick={ () => this.decreaseProduct(product) }
+                          >
+                            <AiFillMinusSquare id="button-icon2" />
 
-                      </button>
-                      <button
-                        data-testid="remove-product"
-                        type="button"
-                        onClick={ () => this.removeProduct(product) }
-                      >
-                        Excluir
+                          </button>
+                          <button
+                            data-testid="remove-product"
+                            type="button"
+                            onClick={ () => this.removeProduct(product) }
+                          >
+                            <MdDelete id="button-icon3" />
 
-                      </button>
-
-                    </div>
-                  ))
-                }
-              </div>
-            )
-        }
-        <Link data-testid="checkout-products" to="/checkout">
-          <button
-            type="button"
-          >
-            Resumo da compra
-          </button>
-        </Link>
-      </div>
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              )
+          }
+          <Link data-testid="checkout-products" to="/checkout">
+            <button
+              className="btn btn-primary btn-resume"
+              type="button"
+            >
+              Resumo da compra
+            </button>
+          </Link>
+        </div>
+      </>
     );
   }
 }
