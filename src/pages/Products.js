@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getProductById } from '../services/api';
 import addProduct from '../services/LocalStorage';
 import Form from '../components/Form';
+import '../styles/Product.css';
 
 class Products extends React.Component {
   state = {

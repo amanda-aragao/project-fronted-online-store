@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/ShopCart.css';
 
 class ShopCart extends Component {
   state = {

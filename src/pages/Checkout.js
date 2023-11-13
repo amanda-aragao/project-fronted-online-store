@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-max-depth */
+/* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../components/Header';
+import '../styles/Checkout.css';
 
 class Checkout extends React.Component {
   state = {
@@ -15,10 +19,6 @@ class Checkout extends React.Component {
   };
 
   componentDidMount() {
-<<<<<<< HEAD
-    // const { keyStorage } = this.state;
-=======
->>>>>>> 6559b5c11deea7714b4996d4450c4473e5af77c2
     const value = JSON.parse(localStorage.getItem('productsLocalStorage'));
     this.setState({ keyStorage: value });
   }
@@ -68,138 +68,180 @@ class Checkout extends React.Component {
       error,
     } = this.state;
     return (
-<<<<<<< HEAD
-      <p> teste </p>
-=======
+      <>
+        <Header />
+        <div className="container-all">
+          {
+            keyStorage.length > 0
+              ? (
+                <div className="container-all-itens">
+                  {
+                    keyStorage.map((product) => (
+                      <div
+                        key={ product.product.id }
+                        className="card-product-shopping-card"
+                      >
+                        <p>
+                          {product.product.title}
+                        </p>
+                        <img
+                          className="card-img"
+                          src={ `${product.product.thumbnail}` }
+                          alt="product-img"
+                        />
+                        <p>
+                          {product.quantity}
+                        </p>
+                      </div>
+                    ))
+                  }
+                </div>
+              ) : null
+          }
+          <form className="form-checkout">
+            <h3>Dados para envio</h3>
+            <label className="form-label">
+              Nome:
+              <input
+                className="form-control"
+                onChange={ this.handeChange }
+                value={ name }
+                type="text"
+                name="name"
+                data-testid="checkout-fullname"
+              />
+            </label>
 
-      <div>
-        {
-          keyStorage.length > 0
-            ? (
-              <div>
-                {
-                  keyStorage.map((product) => (
-                    <div key={ product.product.id }>
-                      <p>
-                        {product.product.title}
-                      </p>
-                      <p>
-                        {product.quantity}
-                      </p>
-                    </div>
-                  ))
-                }
-              </div>
-            ) : null
-        }
-        <form>
-          <input
-            placeholder="Nome"
-            onChange={ this.handeChange }
-            value={ name }
-            type="text"
-            name="name"
-            data-testid="checkout-fullname"
-          />
-          <input
-            placeholder="Email"
-            onChange={ this.handeChange }
-            value={ email }
-            type="email"
-            name="email"
-            data-testid="checkout-email"
-          />
-          <input
-            placeholder="CPF"
-            onChange={ this.handeChange }
-            value={ cpf }
-            type="text"
-            name="cpf"
-            data-testid="checkout-cpf"
-          />
-          <input
-            placeholder="Telefone"
-            onChange={ this.handeChange }
-            value={ phone }
-            type="text"
-            name="phone"
-            data-testid="checkout-phone"
-          />
-          <input
-            placeholder="CEP"
-            onChange={ this.handeChange }
-            value={ cep }
-            type="text"
-            name="cep"
-            data-testid="checkout-cep"
-          />
-          <input
-            placeholder="Endereço"
-            onChange={ this.handeChange }
-            value={ address }
-            type="text"
-            name="address"
-            data-testid="checkout-address"
-          />
-          <label htmlFor="payment1">
-            Boleto
-            <input
-              onChange={ this.handeChange }
-              value="boleto"
-              type="radio"
-              name="radio"
-              id="payment1"
-              data-testid="ticket-payment"
-            />
-          </label>
-          <label htmlFor="payment2">
-            Visa
-            <input
-              onChange={ this.handeChange }
-              value="visa"
-              type="radio"
-              name="radio"
-              id="payment2"
-              data-testid="visa-payment"
-            />
-          </label>
-          MasterCard
-          <label htmlFor="payment3">
-            <input
-              onChange={ this.handeChange }
-              value="mastercard"
-              type="radio"
-              name="radio"
-              id="payment3"
-              data-testid="master-payment"
-            />
-          </label>
-          <label htmlFor="payment3">
-            Elo
-            <input
-              onChange={ this.handeChange }
-              value="elo"
-              type="radio"
-              name="radio"
-              id="payment4"
-              data-testid="elo-payment"
-            />
-          </label>
-          <button
-            // disabled={ !validate }
-            type="button"
-            onClick={ this.handleClick }
-            data-testid="checkout-btn"
-          >
-            Finalizar
-          </button>
-        </form>
-        {
-          error ? <p data-testid="error-msg">Campos inválidos</p> : null
-        }
-      </div>
->>>>>>> 6559b5c11deea7714b4996d4450c4473e5af77c2
+            <label className="form-label">
+              Email:
+              <input
+                className="form-control"
+                onChange={ this.handeChange }
+                value={ email }
+                type="email"
+                name="email"
+                data-testid="checkout-email"
+              />
+            </label>
 
+            <label className="form-label">
+              CPF:
+              <input
+                className="form-control"
+                onChange={ this.handeChange }
+                value={ cpf }
+                type="text"
+                name="cpf"
+                data-testid="checkout-cpf"
+              />
+            </label>
+
+            <label className="form-label">
+              Telefone:
+              <input
+                className="form-control"
+                onChange={ this.handeChange }
+                value={ phone }
+                type="text"
+                name="phone"
+                data-testid="checkout-phone"
+              />
+            </label>
+
+            <label className="form-label">
+              CEP:
+              <input
+                className="form-control"
+                onChange={ this.handeChange }
+                value={ cep }
+                type="text"
+                name="cep"
+                data-testid="checkout-cep"
+              />
+            </label>
+
+            <label className="form-label">
+              Endereço:
+              <input
+                className="form-control"
+                onChange={ this.handeChange }
+                value={ address }
+                type="text"
+                name="address"
+                data-testid="checkout-address"
+              />
+            </label>
+
+            <label className="form-label">
+              Forma de Pagamento:
+              <label htmlFor="payment1" className="form-check-label">
+                <input
+                  className="form-check-input"
+                  onChange={ this.handeChange }
+                  value="boleto"
+                  type="radio"
+                  name="radio"
+                  id="payment1"
+                  data-testid="ticket-payment"
+                />
+                Boleto
+              </label>
+
+              <label htmlFor="payment2" className="form-check-label">
+                <input
+                  className="form-check-input"
+                  onChange={ this.handeChange }
+                  value="visa"
+                  type="radio"
+                  name="radio"
+                  id="payment2"
+                  data-testid="visa-payment"
+                />
+                Visa
+              </label>
+
+              <label htmlFor="payment3" className="form-check-label">
+                <input
+                  className="form-check-input"
+                  onChange={ this.handeChange }
+                  value="mastercard"
+                  type="radio"
+                  name="radio"
+                  id="payment3"
+                  data-testid="master-payment"
+                />
+                MasterCard
+              </label>
+
+              <label htmlFor="payment4" className="form-check-label">
+                <input
+                  className="form-check-input"
+                  onChange={ this.handeChange }
+                  value="elo"
+                  type="radio"
+                  name="radio"
+                  id="payment4"
+                  data-testid="elo-payment"
+                />
+                Elo
+              </label>
+            </label>
+
+            <button
+              className="btn btn-primary"
+              // disabled={ !validate }
+              type="button"
+              onClick={ this.handleClick }
+              data-testid="checkout-btn"
+            >
+              Finalizar
+            </button>
+          </form>
+          {
+            error ? <p data-testid="error-msg">Campos inválidos</p> : null
+          }
+        </div>
+      </>
     );
   }
 }
@@ -208,5 +250,5 @@ Checkout.propTypes = {
     push: PropTypes.func,
   }).isRequired,
 };
-
+// eslint-disable-next-line max-lines
 export default Checkout;

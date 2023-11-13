@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Form.css';
 
 export default class Form extends Component {
   state = {
@@ -7,20 +8,16 @@ export default class Form extends Component {
     textArea: '',
     radio: '',
     error: false,
-    // product: {},
+
   };
 
   componentDidMount() {
     const { product } = this.props;
     console.log(product);
-    // this.setState({
-    //   product,
-    // }, () => console.log(this.state.product) );
 
     if (!JSON.parse(localStorage.getItem(`${product.id}`))) {
       localStorage.setItem(`${product.id}`, JSON.stringify([]));
     }
-    // console.log(product);
   }
 
   handleChange = ({ target }) => {

@@ -1,18 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-// import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ShopCart from './pages/ShopCart';
 import Checkout from './pages/Checkout';
 
 class App extends React.Component {
-  // componentDidMount() {
-  //   // getCategories();
-  //   // getProductsFromCategoryAndQuery('Agro');
-  // }
-
   render() {
     return (
       <Switch>

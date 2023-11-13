@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import addProduct from '../services/LocalStorage';
+import '../styles/Home.css';
 
 class Home extends React.Component {
   state = {
